@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>
+            Ecart
+        </title>
+        <link rel="stylesheet" href="ecar.css">
+    </head>
+    <body>
+        <div class="head">
+            <img  class="img1" src="logo1.png" alt="logo" >
+            <img src="images.png" alt="img" height="150px">
+            <div class="ib"><button ><a href="items.html"><b>Cart</b></a></button></div>
+        </div>
+        <div class="cont">
+            <div class="iem">
+                <div class="itmmg">
+                    <img src="iphone2.jpg" alt="iphone" height="200px">
+                </div>
+                <div class="iteminf">
+                    <h2>Iphone 14 pro Max</h2>
+                    <h3>Price: <span>1,20,0000</span></h3>
+                    <button onclick="add('Iphone 14 pro Max',120000, 'iphone2.jpg')">Add to Cart</button>
+                </div> 
+            </div>
+            <div class="iem">
+                <div class="itmmg">
+                    <img src="realme1.jpg" alt="realme1" height="200px" width="200px">
+                </div>
+                <div class="iteminf">
+                    <h2>Realme Gt Neo</h2>
+                    <h3>Price: <span>30,0000</span></h3>
+                    <button onclick="add('Realme Gt Neo',30000,'realme1.jpg')">Add to Cart</button>
+                </div> 
+            </div>
+            <div class="iem">
+                <div class="itmmg">
+                    <img src="samsung2.jpg" alt="samsung1" height="200px">
+                </div>
+                <div class="iteminf">
+                    <h2>Samsung S23 Ultra</h2>
+                    <h3>Price:<span>1,00,0000</span></h3>
+                    <button onclick="add('Samsung S23 Ultra',100000,'samsung2.jpg')">Add to Cart</button>
+                </div> 
+            </div>
+            <div class="iem">
+                <div class="itmmg">
+                    <img src="redmi1.png" alt="redmi1" height="200px" width="170px">
+                </div>
+                <div class="iteminf">
+                    <h2>RedMi Note 13 Pro plus</h2>
+                    <h3>Price: <span>28,0000</span></h3>
+                    <button onclick="add('RedMi Note 13 Pro plus',28000,'redmi1.png')">Add to Cart</button>
+                </div> 
+            </div>
+            <div class="iem">
+                <div class="itmmg">
+                    <img src="oneplus.jpeg" alt="Oneplus" height="200px">
+                </div>
+                <div class="iteminf">
+                    <h2>Oneplus 12R</h2>
+                    <h3>Price: <span>48,0000</span></h3>
+                    <button onclick="add('Oneplus 12R',48000,'oneplus.jpeg')" >Add to Cart</button>
+                </div> 
+            </div>
+        </div>
+
+        <script>
+            
+            function add(name, pr, image){
+
+                let arr = JSON.parse(localStorage.getItem('arr')) || []
+
+                let tot = JSON.parse(localStorage.getItem('tot')) || 0.0
+
+                let qunt = 1
+                let f=0
+                arr.forEach(element => {
+                    if(element.ItemName === name){
+                        f=1
+                        element.q  = element.q + 1
+
+                    }
+                });
+                if(f===0){
+                        ob={
+                        ItemName : name,
+                        Price: pr,
+                        Img: image,
+                        q: qunt
+                    }
+                    arr.push(ob)
+                }
+                tot+=pr
+
+                localStorage.setItem('arr',JSON.stringify(arr));
+                localStorage.setItem('tot',JSON.stringify(tot));
+
+                alert('Item added to Cart');
+            }
+
+
+        </script>
+
+    </body>
+</html>

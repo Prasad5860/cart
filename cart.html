@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>
+            Shopping cart
+        </title>
+        <link rel="stylesheet" href="cart.css">
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <label for="ItemId">Item id</label><br>
+                <input type="text" id="ItemId" name="itemid" required><br>
+                <label for="ItemName">Item Name</label><br>
+                <input type="text" id="ItemName" name="item name" required><br>
+                <label for="qnt">Quantity</label><br>
+                <input type="text" id="qnt" name="quant" required><br>
+                <div class="bt">
+                    <button onclick="add()">Add to Cart</button>
+                   <button id="bt1" onclick="show()">Show Cart</button>
+                </div>
+            </form>
+        </div>
+        <div class="itms" id="items">
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                 show(); 
+            });
+
+            function add(){
+                const id=document.getElementById("ItemId").name;
+                const id_val=document.getElementById("ItemId").value;
+                const name=document.getElementById("ItemName").name;
+                const name_val=document.getElementById("ItemName").value;
+                const qnnt=document.getElementById("qnt").name;
+                const qnnt_val=document.getElementById("qnt").value;
+
+                if(id_val === '' || name_val === '' || qnnt_val == ''){
+                    alert("please all the fileds");
+                    event.preventDefault();
+                    return;
+                }
+                 
+                const obj = {
+                    id: id_val,
+                    name: name_val,
+                    qnnt: qnnt_val
+                }
+                let arr = JSON.parse(localStorage.getItem('arr')) || [];
+
+                console.log(obj);
+
+                arr.push(obj);
+
+                localStorage.setItem('arr',JSON.stringify(arr));
+
+                show();
+            }
+
+
+            function show(){
+
+                const id=document.getElementById("ItemId").name;
+                const name=document.getElementById("ItemName").name;
+                const qnnt=document.getElementById("qnt").name;
+                const el = document.getElementById("items")
+
+                let ar = JSON.parse(localStorage.getItem('arr')) || [];
+                el.innerHTML=''
+                let txt
+
+    
+                for(let i = 0; i < ar.length; i++){
+
+                    txt=""
+
+                    txt+="<h3>Item: "+(i+1)+"</h3>"
+                    txt+="<p>"+id+": "+ar[i].id+"</p>"
+                    txt+="<p>"+name+": "+ar[i].name+"</p>"
+                    txt+="<p>"+qnnt+": "+ar[i].qnnt+"</p>"
+
+                    txt+="<button onclick='removeIt("+i+")'>Remove</button>"
+
+                    const nd = document.createElement('div')
+                    nd.innerHTML=txt
+
+                    el.appendChild(nd)
+
+                }
+
+            }
+            function removeIt(ind){
+                let arr= JSON.parse(localStorage.getItem('arr')) || []
+                arr.splice(ind,1);
+                localStorage.setItem('arr',JSON.stringify(arr))
+                show();
+            }
+        </script>
+    </body>
+</html>

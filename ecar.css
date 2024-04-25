@@ -1,0 +1,87 @@
+body{
+    background: linear-gradient(120deg ,rgba(173, 13, 139, 0.849),rgb(12, 228, 156));
+}
+.head{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+}
+
+a{
+    text-decoration: none;
+}
+.tab{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 50px;
+    margin-top: 150px;
+}
+table{
+    background-color: white;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px 30px;
+}
+
+.tab img {
+    max-width: 150px; /* Limit the image width */
+    max-height: 150px; /* Limit the image height */
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+.ib{
+    margin-top: 50px;
+    display: flex;
+    align-items: end;
+    width: 100%;
+    justify-content: end;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.ib button{
+    display: block;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: coral;
+    border-radius: 10%;
+    font-size: larger;
+}
+.img1{
+     width: 200px;
+     height:170px;
+     display: block;
+}
+.cont{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 150px;
+    position:static
+}   
+.iem{
+    margin-left: 40px;
+    margin-top: 20px;
+    width:200px;
+    border: 1px solid black;
+    border-radius: 13px; 
+    padding: 30px;
+    background-color: white;
+}
+.iem:hover{
+    box-shadow: 10px 10px 5px rgb(209, 212, 10);
+    border-radius: 15px;
+    border: yellow;
+}
+button{
+    padding: 5px;
+}
+
